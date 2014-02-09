@@ -1,6 +1,6 @@
 /// -*- tab-width: 4; Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil -*-
 #ifndef THISFIRMWARE
-#define THISFIRMWARE "ArduCopter V3.1 MPNG-dev"
+#define THISFIRMWARE "ArduCopter V3.1 MPNG-dev+splinenav"
 #endif
 /*
    This program is free software: you can redistribute it and/or modify
@@ -145,6 +145,7 @@
 // Local modules
 #include "Parameters.h"
 #include "GCS.h"
+#include "SplineNav.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // cliSerial
@@ -790,6 +791,11 @@ static AP_InertialNav inertial_nav(&ahrs, &barometer, g_gps, gps_glitch);
 static AC_WPNav wp_nav(&inertial_nav, &ahrs, &g.pi_loiter_lat, &g.pi_loiter_lon, &g.pid_loiter_rate_lat, &g.pid_loiter_rate_lon);
 
 ////////////////////////////////////////////////////////////////////////////////
+// SplineNav object
+////////////////////////////////////////////////////////////////////////////////
+static SplineNav spline_nav; 
+
+////////////////////////////////////////////////////////////////////////////////
 // Performance monitoring
 ////////////////////////////////////////////////////////////////////////////////
 static int16_t pmTest1;
@@ -1370,6 +1376,7 @@ bool set_yaw_mode(uint8_t new_yaw_mode)
 
     switch( new_yaw_mode ) {
         case YAW_HOLD:
+        case YAW_SPLINE:
             yaw_initialised = true;
             break;
         case YAW_ACRO:
@@ -1453,6 +1460,14 @@ void update_yaw_mode(void)
     case YAW_ACRO:
         // pilot controlled yaw using rate controller
         get_yaw_rate_stabilized_bf(pilot_yaw);
+        break;
+
+    case YAW_SPLINE:
+        get_yaw_rate_spline();
+        // if there is any pilot input, switch to YAW_HOLD mode for the next iteration
+        if (pilot_yaw != 0) {
+            set_yaw_mode(YAW_HOLD);
+        }
         break;
 
     case YAW_LOOK_AT_NEXT_WP:
