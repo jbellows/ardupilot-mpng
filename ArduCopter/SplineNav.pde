@@ -262,7 +262,7 @@ Vector3f SplineNav::next_spline_waypoint() {
     int n = g.command_total.get()-1; // total number of commands
     for (int i=0; i<n; i++) { // loop for a max of total number of commands
         if (next_cmd_index < n) next_cmd_index++;
-        else if (SPLINE_LOOP) {
+        else if (SPLINE_LOOP == TRUE) {
             next_cmd_index=1;
         }
         else { // out of commands
