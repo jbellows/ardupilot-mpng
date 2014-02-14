@@ -8,6 +8,7 @@
 
 #include <AP_HAL.h>
 #include <AP_Param.h>
+#include <AP_Math.h>
 
 // we have separate helpers disabled to make it possible
 // to select MAVLink 1.0 in the arduino GUI build
@@ -29,7 +30,7 @@
 // this allows us to make mavlink_message_t much smaller. It means we
 // can't support the largest messages in common.xml, but we don't need
 // those for APM
-#define MAVLINK_MAX_PAYLOAD_LEN 96
+#define MAVLINK_MAX_PAYLOAD_LEN 104
 
 #define MAVLINK_COMM_NUM_BUFFERS 2
 #include "include/mavlink/v1.0/mavlink_types.h"

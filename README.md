@@ -1,7 +1,8 @@
-# Release Notes for MegaPirateNG 3.0.1 R3 BETA (based on ArduPilot 3.0.1)
+# Release Notes for MegaPirateNG 3.1 (based on ArduPilot 3.1, ArduPlane 2.76)
 
 ## How to compile and configure MegaPirateNG
 Follow instructions at: http://docs.megapirateng.com
+
 
 ## Sonar
 Currently sonar is not supported
