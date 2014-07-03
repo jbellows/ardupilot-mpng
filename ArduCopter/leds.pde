@@ -45,6 +45,7 @@ static void copter_leds_init(void)
     pinMode(COPTER_LED_6, OUTPUT);              //Motor or Aux LED
     pinMode(COPTER_LED_7, OUTPUT);              //Motor or GPS LED
     pinMode(COPTER_LED_8, OUTPUT);              //Motor or GPS LED
+    pinMode(PIEZO_PIN, OUTPUT);			//Piezo Buzzer
 
     if (!(g.copter_leds_mode & COPTER_LEDS_BITMASK_BEEPER)) {
         piezo_beep();
