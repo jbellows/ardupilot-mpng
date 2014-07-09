@@ -414,6 +414,7 @@ AP_GPS_UBLOX::_update_checksum(uint8_t *data, uint8_t len, uint8_t &ck_a, uint8_
 void
 AP_GPS_UBLOX::_send_message(uint8_t msg_class, uint8_t msg_id, void *msg, uint8_t size)
 {
+/* jb
     struct ubx_header header;
     uint8_t ck_a=0, ck_b=0;
     header.preamble1 = PREAMBLE1;
@@ -429,6 +430,7 @@ AP_GPS_UBLOX::_send_message(uint8_t msg_class, uint8_t msg_id, void *msg, uint8_
     _port->write((const uint8_t *)msg, size);
     _port->write((const uint8_t *)&ck_a, 1);
     _port->write((const uint8_t *)&ck_b, 1);
+*/
 }
 
 
