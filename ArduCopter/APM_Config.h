@@ -1,7 +1,7 @@
 // -*- tab-width: 4; Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil -*-
 
 // User specific config file.  Any items listed in config.h can be overridden here.
-
+#define MPNG_BOARD_TYPE RCTIMER_CRIUS_V2
 // Select Megapirate board type:
 //#define MPNG_BOARD_TYPE   CRIUS_V1
 /*
@@ -47,7 +47,7 @@
 // uncomment the lines below to save on flash space if compiling for the APM using Arduino IDE.  Top items save the most flash space
 //#define CLI_ENABLED           DISABLED            // disable the CLI (command-line-interface) to save 21K of flash space
 //#define LOGGING_ENABLED       DISABLED            // disable dataflash logging to save 11K of flash space
-//#define GPS_PROTOCOL          GPS_PROTOCOL_UBLOX  // hard code GPS to Ublox to save 8k of flash
+#define GPS_PROTOCOL          GPS_PROTOCOL_UBLOX  // hard code GPS to Ublox to save 8k of flash
 //#define GPS_PROTOCOL          GPS_PROTOCOL_MTK19  // hard cdoe GPS to Mediatek to save 10k of flash
 //#define MOUNT                 DISABLED            // disable the camera gimbal to save 8K of flash space
 //#define AUTOTUNE              DISABLED            // disable the auto tune functionality to save 7k of flash
